@@ -17,6 +17,9 @@ import { gateRequirements } from "../data/gate";
   <ul class="gate-remaining">
     {gateRequirements.map((req, i) => (
       <li data-gate-req={String(i)} data-met="false">
+        <span class="gate-tick" aria-hidden="true">
+          <svg viewBox="0 0 12 12"><path d="M1.5 6.4 4.4 9.3 10.5 3" /></svg>
+        </span>
         <span class="gate-req-label">{req.label}</span>
       </li>
     ))}

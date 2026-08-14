@@ -30,9 +30,11 @@ const num = String(phase.number).padStart(2, "0");
           <path d="M4.5 2.5 8 6l-3.5 3.5" />
         </svg>
       </summary>
-      {group.blurb && <p class="group-blurb">{group.blurb}</p>}
-      <div class="rows">
-        {group.tasks.map((task) => <TaskItem task={task} />)}
+      <div class="group-body">
+        {group.blurb && <p class="group-blurb">{group.blurb}</p>}
+        <div class="rows">
+          {group.tasks.map((task) => <TaskItem task={task} />)}
+        </div>
       </div>
     </details>
   ))}
