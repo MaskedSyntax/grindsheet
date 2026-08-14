@@ -627,7 +627,12 @@ body[data-hide-done="true"] .phase[data-all-done="true"] .phase-blurb { display:
   font-size: 13.5px;
 }
 
-.foot p { margin: 0 0 10px; max-width: 68ch; }
+.foot p {
+  margin: 0 auto 10px;
+  max-width: 62ch;
+  text-align: center;
+  text-wrap: balance;
+}
 
 .foot code {
   font-family: var(--font-mono);
@@ -635,6 +640,7 @@ body[data-hide-done="true"] .phase[data-all-done="true"] .phase-blurb { display:
   background: var(--surface);
   padding: 1px 5px;
   border-radius: 5px;
+  white-space: nowrap;
 }
 
 @media (max-width: 480px) {
