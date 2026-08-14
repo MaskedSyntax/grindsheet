@@ -1,5 +1,7 @@
 # iOS Job Roadmap
 
+**→ [maskedsyntax.github.io/grindsheet-ios](https://maskedsyntax.github.io/grindsheet-ios/)**
+
 A single-page checklist for getting job-ready as a junior iOS developer. 206 things
 worth doing at least once, in order, each linking to the thing you actually do.
 
@@ -59,8 +61,24 @@ if a gate requirement points at an id that no longer exists.
 
 ## Deploying
 
-Vercel, framework preset **Astro**, root directory `.`, no environment variables.
-Build `astro build`, output `dist/`.
+Pushing to `master` builds and publishes to GitHub Pages via
+[`.github/workflows/deploy.yml`](.github/workflows/deploy.yml). Pages must be set
+to **Source: GitHub Actions** in the repository settings.
+
+Pages serves a project site from a subpath, so the build sets
+`base: "/grindsheet-ios"`. Two consequences worth knowing:
+
+- `public/.nojekyll` is required. Pages runs Jekyll by default, and Jekyll skips
+  directories starting with `_` — without it, Astro's `_astro/` bundle is
+  dropped and the page deploys unstyled.
+- Anything linking to an asset must go through `import.meta.env.BASE_URL`
+  (see `src/layouts/Base.astro`), not a root-absolute path.
+
+To host at a root path instead — Vercel, or a custom domain — override the base:
+
+```sh
+BASE_PATH="" SITE_URL="https://example.com" bun run build
+```
 
 ## Licence
 
